@@ -12,7 +12,12 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
+    "test:e2e:local": "playwright test --headed",
     "build-only": "vite build",
+    "start:server": "node server/index.js",
+    "build-and-start": "npm run build && node server/index.js",
+    "dev:server": "cd server && npm run dev",
+    "dev:full": "run-p dev dev:server",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"

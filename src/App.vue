@@ -1,31 +1,34 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import FibCalculator from './components/FibCalculator.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="wrapper">
+    <FibCalculator />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+    <div class="description">
+      <p>
+        This is a simple Fibonacci calculator built with Vue 3 and TypeScript. Enter a non-negative
+        integer to see its Fibonacci number.
+      </p>
+      <p>The Fibonacci sequence is defined as follows:</p>
+      <ul>
+        <li>F(0) = 0</li>
+        <li>F(1) = 1</li>
+        <li>F(n) = F(n-1) + F(n-2) for n &gt; 1</li>
+      </ul>
     </div>
-  </header>
 
-  <RouterView />
+    <!-- <nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+    </nav> -->
+  </div>
+
+  <!-- <RouterView /> -->
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
 .logo {
   display: block;
   margin: 0 auto 2rem;
@@ -57,20 +60,8 @@ nav a:first-of-type {
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
   .logo {
     margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
   }
 
   nav {
@@ -81,5 +72,17 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+}
+
+.description {
+  max-width: 600px;
+  margin: 1rem auto 0;
+  padding: 0 1rem;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+.description p {
+  margin-bottom: 1rem;
 }
 </style>
