@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import FibCalculator from '../components/FibCalculator.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <FibCalculator />
   </main>
 </template>
