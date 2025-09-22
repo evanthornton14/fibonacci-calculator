@@ -11,7 +11,7 @@ export default defineConfig({
   reporter: 'html',
   use: {
     actionTimeout: 0,
-    baseURL: process.env.CI ? 'http://localhost:4173' : 'http://localhost:5173',
+    baseURL: process.env.CI ? 'http://localhost:4000' : 'http://localhost:5173',
     trace: 'on-first-retry',
     headless: !!process.env.CI,
   },
@@ -21,9 +21,9 @@ export default defineConfig({
     { name: 'webkit', use: { ...devices['Desktop Safari'] } },
   ],
   webServer: {
-    // Locally start frontend+backend together; on CI use preview build
-    command: process.env.CI ? 'npm run preview' : 'npm run dev:full',
-    port: process.env.CI ? 4173 : 5173,
+    // Locally start frontend+backend together; on CI use built server
+    command: process.env.CI ? 'node server/dist/index.js' : 'npm run dev:full',
+    port: process.env.CI ? 4000 : 5173,
     reuseExistingServer: !process.env.CI,
   },
 })

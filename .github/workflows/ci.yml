@@ -56,15 +56,29 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Cache server node_modules
+        uses: actions/cache@v4
+        with:
+          path: server/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('server/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies (root)
         run: npm ci
 
+      - name: Install server dependencies
+        run: cd server && npm ci
+
       - name: Build frontend
         run: npm run build
+
+      - name: Build server
+        run: cd server && npm run build
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        # Playwright will use playwright.config.ts which runs `npm run preview` on CI
+        # Playwright will use playwright.config.ts which runs the built server on CI
         run: npx playwright test --reporter=list
