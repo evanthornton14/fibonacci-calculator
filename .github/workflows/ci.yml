@@ -82,3 +82,27 @@ jobs:
       - name: Run Playwright tests
         # Playwright will use playwright.config.ts which runs the built server on CI
         run: npx playwright test --reporter=list
+
+  lint-and-unit:
+    name: Lint and Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npm run type-check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm run test:unit -- --run

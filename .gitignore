@@ -30,4 +30,7 @@ coverage
 *.tsbuildinfo
 
 test-results/
-playwright-report/
+
+server/dist/
+package-lock.json
+.env

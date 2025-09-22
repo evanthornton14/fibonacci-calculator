@@ -20,7 +20,9 @@
     "dev:full": "run-p dev dev:server",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "prepare": "husky install",
+    "setup": "npm install && npm run prepare"
   },
   "dependencies": {
     "pinia": "^3.0.3",
@@ -44,12 +46,26 @@
     "eslint-plugin-vue": "~10.3.0",
     "jiti": "^2.4.2",
     "jsdom": "^26.1.0",
-    "npm-run-all2": "^8.0.4",
+    "npm-run-all": "^4.1.5",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.2",
     "prettier": "3.6.2",
     "typescript": "~5.8.0",
     "vite": "^7.0.6",
     "vite-plugin-vue-devtools": "^8.0.0",
     "vitest": "^3.2.4",
     "vue-tsc": "^3.0.4"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,md,json,html}": [
+      "prettier --write"
+    ],
+    "**/*.{spec,test}.{js,ts}": [
+      "vitest --run"
+    ]
   }
 }
