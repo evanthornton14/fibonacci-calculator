@@ -55,7 +55,7 @@ const staticDir = path.resolve(__dirname, '..', 'dist');
 app.use(express.static(staticDir));
 
 // Fallback to index.html for SPA client-side routing
-app.get('/*', (req, res) => {
+app.get('/:catchAll(.*)', (req, res) => {
   res.sendFile(path.join(staticDir, 'index.html'), (err) => {
     if (err) {
       res.status(404).json({ error: 'Not found' });
