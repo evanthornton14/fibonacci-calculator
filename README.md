@@ -1,3 +1,16 @@
+### Contributing
+
+Please follow these steps when contributing:
+
+- Run `npm run setup` once after cloning to install dev dependencies and enable Git hooks.
+- Format your code with Prettier and run ESLint autofixes locally before committing, or let the pre-commit hook do it for you.
+- If the pre-commit hook fails on CI or locally, make sure you have run `npm install` and `npm run prepare`.
+
+Troubleshooting:
+
+- If the hook does not run, verify that `.husky/pre-commit` exists and is executable. On Windows, Git may not honor executable bits; running `npm run prepare` should configure Husky.
+- To bypass hooks temporarily: `git commit --no-verify` (only for emergency fixes).
+
 # fibonacci-calculator
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -18,6 +31,23 @@ See [Vite Configuration Reference](https://vite.dev/config/).
 
 ```sh
 npm install
+```
+
+### Contributor setup
+
+Run the repository setup script to install dependencies and enable Git hooks:
+
+```sh
+npm run setup
+```
+
+This runs `npm install` and `npm run prepare` which installs Husky hooks for pre-commit linting (lint-staged).
+
+If you prefer to install manually:
+
+```sh
+npm install
+npm run prepare
 ```
 
 ### Compile and Hot-Reload for Development

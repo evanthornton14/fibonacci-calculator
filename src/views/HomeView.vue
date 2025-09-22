@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FibCalculator from '../components/FibCalculator.vue'
+import FibCalculator from '../components/FibCalculator.vue';
 </script>
 
 <template>
